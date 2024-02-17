@@ -2,7 +2,9 @@
 
 [![Build and publish docker image](https://github.com/vemonet/gpu-workspace/actions/workflows/build.yml/badge.svg)](https://github.com/vemonet/gpu-workspace/actions/workflows/build.yml)
 
-This Docker image provides a lightweight and ready-to-use containerized environment for remote development on GPU servers, complete with the [Nvidia CUDA toolkit](https://developer.nvidia.com/cuda-toolkit). It is ideal for anyone looking to leverage GPU resources for computing tasks, machine learning, or data processing.
+This docker image provides a lightweight and ready-to-use containerized environment for remote development on GPU servers, complete with the [Nvidia CUDA toolkit](https://developer.nvidia.com/cuda-toolkit). 
+
+It is ideal for anyone looking to leverage GPU resources for computing tasks, machine learning, or data processing.
 
 Published image: `ghcr.io/vemonet/gpu-workspace:main`
 
@@ -10,17 +12,13 @@ Published image: `ghcr.io/vemonet/gpu-workspace:main`
 
 ### 1. 🐳 Start the container
 
-**Using docker compose:**
-
-Refer to the `docker-compose.yml` file for a complete deployment configuration with GPU access. Start the container with:
+**Using docker compose:** refer to the `docker-compose.yml` file for a complete deployment configuration with GPU access. Start the container with:
 
 ```bash
 docker compose up
 ```
 
-**Using docker run:**
-
-Alternatively, you can start the container directly using the docker command:
+**Using docker run:** alternatively, you can start the container directly using the docker command:
 
 ```bash
 docker run --rm -it --name gpu-workspace --gpus all -v $(pwd):/app ghcr.io/vemonet/gpu-workspace:main

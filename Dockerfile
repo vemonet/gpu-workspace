@@ -8,13 +8,13 @@ FROM ${BASE_IMAGE}
 LABEL org.opencontainers.image.source https://github.com/vemonet/gpu-workspace
 
 ARG DEBIAN_FRONTEND=noninteractive
-
 ENV TZ=Europe/Amsterdam \
     PYTHONUNBUFFERED=1
 
 # CUDA image requires to install python
 RUN apt-get update && \
     apt-get install -y git vim zsh bash build-essential python3-dev python3-venv pip curl wget unzip htop tmux && \
+    rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade pip hatch
 
 # Install Oh My ZSH! and custom theme

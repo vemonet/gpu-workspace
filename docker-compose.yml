@@ -3,7 +3,7 @@ services:
 
   gpu-workspace:
     # ⚠️ Use an image with GPU drivers and dependencies preinstalled
-    # image: ghcr.io/vemonet/gpu-workspace:latest
+    # image: ghcr.io/vemonet/gpu-workspace:main
     build: .
     # Enable GPUs in this container:
     deploy:

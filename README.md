@@ -4,6 +4,8 @@
 
 This Docker image provides a lightweight and ready-to-use containerized environment for remote development on GPU servers, complete with the [Nvidia CUDA toolkit](https://developer.nvidia.com/cuda-toolkit). It is ideal for anyone looking to leverage GPU resources for computing tasks, machine learning, or data processing.
 
+Published image: `ghcr.io/vemonet/gpu-workspace:main`
+
 ## 🚀 Usage
 
 ### 1. 🐳 Start the container
@@ -21,7 +23,7 @@ docker compose up
 Alternatively, you can start the container directly using the docker command:
 
 ```bash
-docker run --rm -it --name gpu-workspace --gpus all -v $(pwd):/app ghcr.io/vemonet/gpu-workspace:latest
+docker run --rm -it --name gpu-workspace --gpus all -v $(pwd):/app ghcr.io/vemonet/gpu-workspace:main
 ```
 
 ### 2. 🔌 Connect to the container
@@ -61,8 +63,8 @@ Connect to the container on the remote server using Visual Studio Code extension
 The published image uses [`nvcr.io/nvidia/cuda:12.1.0-runtime-ubuntu22.04`](https://ngc.nvidia.com/catalog/containers/nvidia:cuda) as base image (2.7G):
 
 ```bash
-docker build --build-arg BASE_IMAGE=nvcr.io/nvidia/cuda:12.1.0-runtime-ubuntu22.04 -t ghcr.io/vemonet/gpu-workspace:latest .
-docker run --rm -it --name gpu-workspace ghcr.io/vemonet/gpu-workspace:latest
+docker build --build-arg BASE_IMAGE=nvcr.io/nvidia/cuda:12.1.0-runtime-ubuntu22.04 -t ghcr.io/vemonet/gpu-workspace:main .
+docker run --rm -it --name gpu-workspace ghcr.io/vemonet/gpu-workspace:main
 ```
 
 You should be able to use other debian-based Nvidia images as base, such as [`nvcr.io/nvidia/pytorch:23.06-py3`](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch) (8.5G):
@@ -76,7 +78,7 @@ docker build --build-arg BASE_IMAGE=nvcr.io/nvidia/pytorch:23.06-py3 -t ghcr.io/
 > Check the size of your built image (in MB) with:
 >
 > ```bash
-> expr $(docker image inspect ghcr.io/vemonet/gpu-workspace:latest --format='{{.Size}}') / 1000000
+> expr $(docker image inspect ghcr.io/vemonet/gpu-workspace:main --format='{{.Size}}') / 1000000
 > ```
 
 ## 🕊️ Contributions welcome

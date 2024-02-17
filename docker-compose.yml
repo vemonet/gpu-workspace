@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+  gpu-workspace:
+    # ⚠️ Use an image with GPU drivers and dependencies preinstalled
+    # image: ghcr.io/vemonet/gpu-workspace:latest
+    build: .
+    # Enable GPUs in this container:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: 1    # ⚠️ Change the GPU count if you want to give access to more GPUs
+    # Shared memory size for the container
+    shm_size: '4g'
+    # Mount persistent volumes in the container workspace to not lose your data
+    volumes:
+    - ./:/app
+    environment:
+      TZ: Europe/Amsterdam

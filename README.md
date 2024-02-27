@@ -2,17 +2,27 @@
 
 [![Build and publish docker image](https://github.com/vemonet/gpu-workspace/actions/workflows/build.yml/badge.svg)](https://github.com/vemonet/gpu-workspace/actions/workflows/build.yml)
 
-This docker image provides a lightweight and ready-to-use containerized environment for remote development on GPU servers, complete with the [Nvidia CUDA toolkit](https://developer.nvidia.com/cuda-toolkit). 
+This docker image provides a lightweight and ready-to-use containerized environment for remote development on GPU servers, complete with the [NVIDIA CUDA toolkit](https://developer.nvidia.com/cuda-toolkit). 
 
 It is ideal for anyone looking to leverage GPU resources for computing tasks, machine learning, or data processing.
 
-Published image: `ghcr.io/vemonet/gpu-workspace:main`
+Published image latest release available as `ghcr.io/vemonet/gpu-workspace:main`
+
+## 🔋 Features
+
+🐍 **Python 3.10** with `pip` and [`hatch`](https://hatch.pypa.io/latest/), for python development.
+
+🧑‍💻 **ZSH** for a user-friendly terminal experience with [Oh My ZSH!](https://ohmyz.sh/)
+
+⚡ **CUDA** toolkit pre-installed for immediate GPU computing. Use `nvidia-smi` in the terminal inside the container to monitor GPU utilization. Optionally specify which GPUs are available to your scripts by setting the `CUDA_VISIBLE_DEVICES=0,1` environment variable with the ids of the GPUs made available.
+
+📂 Use the **`/app` folder** inside the container to mount your codebase and data as persistent volume.
 
 ## 🚀 Usage
 
 ### 1. 🐳 Start the container
 
-**Using docker compose:** refer to the `docker-compose.yml` file for a complete deployment configuration with GPU access. Start the container with:
+**Using docker compose:** refer to the [`docker-compose.yml`](https://github.com/vemonet/gpu-workspace/blob/main/docker-compose.yml) file for a complete deployment configuration with GPU access. Start the container with:
 
 ```bash
 docker compose up
@@ -41,20 +51,14 @@ Connect to the container on the remote server using Visual Studio Code extension
 > Create a SSH configuration file at `~/.ssh/config` in your home directory for an easy server connection via the **Remote Explorer** extension.
 >
 > ```bash
+> IdentityFile ~/.ssh/id_ecdsa
+> AddKeysToAgent yes
+> StrictHostKeyChecking accept-new
+> 
 > host g1
->   hostname g1.url.to.server.com
->   user username_on_server
+>     hostname g1.url.to.server.com
+>     user username_on_server
 > ```
-
-## 🔋 Features
-
-🐍 **Python 3.10** with `pip` and [`hatch`](https://hatch.pypa.io/latest/), for python development.
-
-🧑‍💻 **ZSH** for an efficient terminal experience with Oh My ZSH.
-
-⚡ **CUDA** toolkit pre-installed for immediate GPU computing. Use `nvidia-smi` in the terminal inside the container to monitor GPU utilization.
-
-📂 Use the **`/app` folder** inside the container to mount your codebase and data as volume.
 
 ## 📦 Build
 

@@ -3,8 +3,7 @@ name: Build and publish
 on:
   push:
     branches: [ "main" ]
-    # Publish semver tags as releases
-    tags: [ 'v*.*.*' ]
+    tags: [ 'v*.*.*' ] # Publish semver tags as releases
   pull_request:
     branches: [ "main" ]
   # schedule:

@@ -19,7 +19,6 @@ RUN apt-get update && \
 RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN curl -fsSL -o ~/.oh-my-zsh/custom/themes/biratime.zsh-theme https://raw.github.com/vemonet/biratime/main/biratime.zsh-theme
 RUN sed -i 's/^ZSH_THEME=".*"$/ZSH_THEME="biratime"/g' ~/.zshrc
-RUN echo "\`conda config --set changeps1 false\`" >> ~/.oh-my-zsh/plugins/virtualenv/virtualenv.plugin.zsh
 RUN echo 'setopt NO_HUP' >> ~/.zshrc
 
 # Add a few aliases to make git easier to use
@@ -30,6 +29,5 @@ RUN echo 'alias gadd="git add . && git commit -m $1"' >> ~/.zshrc
 ENV SHELL=/bin/zsh
 
 WORKDIR /app
-VOLUME [ "/app" ]
 
 ENTRYPOINT ["sleep", "infinity"]

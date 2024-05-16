@@ -20,6 +20,8 @@ Published image latest release available as `ghcr.io/vemonet/gpu-workspace:main`
 
 ## 🚀 Usage
 
+> Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) to access NVIDIA GPUs inside docker containers if it has not yet been installed on the machine.
+
 ### 1. 🐳 Start the container
 
 **Using docker compose:** refer to the [`docker-compose.yml`](https://github.com/vemonet/gpu-workspace/blob/main/docker-compose.yml) file for a complete deployment configuration with GPU access. Start the container with:
@@ -62,14 +64,16 @@ Connect to the container on the remote server using Visual Studio Code extension
 
 ## 📦 Build
 
-The published image uses [`nvcr.io/nvidia/cuda:12.1.0-runtime-ubuntu22.04`](https://ngc.nvidia.com/catalog/containers/nvidia:cuda) as base image (2.7G):
+The published image uses the ubuntu [`nvcr.io/nvidia/cuda`](https://ngc.nvidia.com/catalog/containers/nvidia:cuda) as base image (~2.7G). Checkout the `BASE_IMAGE` in the `Dockerfile` to find out which version is used in the currently published image. You can easily change which image is used as base when building:
 
 ```bash
 docker build --build-arg BASE_IMAGE=nvcr.io/nvidia/cuda:12.1.0-runtime-ubuntu22.04 -t ghcr.io/vemonet/gpu-workspace:main .
 docker run --rm -it --name gpu-workspace ghcr.io/vemonet/gpu-workspace:main
 ```
 
-You should be able to use other debian-based Nvidia images as base, such as [`nvcr.io/nvidia/pytorch:23.06-py3`](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch) (8.5G):
+> Find the list of available official nvidia CUDA docker images here: https://ngc.nvidia.com/catalog/containers/nvidia:cuda
+
+You should be able to use other debian-based Nvidia images as base, such as [`nvcr.io/nvidia/pytorch:23.06-py3`](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch) (~8.5G):
 
 ```bash
 docker build --build-arg BASE_IMAGE=nvcr.io/nvidia/pytorch:23.06-py3 -t ghcr.io/vemonet/gpu-workspace:pytorch .

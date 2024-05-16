@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=nvcr.io/nvidia/cuda:12.1.0-runtime-ubuntu22.04
+ARG BASE_IMAGE=nvcr.io/nvidia/cuda:12.2.2-runtime-ubuntu22.04
 FROM ${BASE_IMAGE}
 
 LABEL org.opencontainers.image.description "Basic image with CUDA for use with VSCode SSH"
